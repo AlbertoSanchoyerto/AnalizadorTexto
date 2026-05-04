@@ -48,7 +48,7 @@ make
 ## 🧪 Ejemplo de uso
 
 ```cpp
-#include "nlp/DocumentoTexto.h"
+#include "core/DocumentoTexto.h"
 #include "utils/Logger.h"
 
 int main() {
