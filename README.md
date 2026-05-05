@@ -34,14 +34,15 @@ AnalizadorNLP/
 
 ---
 
-## 🔧 Instalación
+## 🔧 Instalación de fuentes
 
-git clone https://github.com/tuusuario/AnalizadorNLP.git
-cd AnalizadorNLP
+git clone https://github.com/tuusuario/AnalizadorTexto.git
+cd AnalizadorTexto
 mkdir build
 cd build
 cmake ..
 make
+make --install
 
 ---
 
