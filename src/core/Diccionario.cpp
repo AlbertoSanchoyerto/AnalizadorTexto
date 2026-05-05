@@ -1,8 +1,12 @@
 /**
 * @file Diccionario.cpp
 */
-#include "utis/ErrorMacros.h"
+#include "utils/ErrorMacros.h"
 #include "core/Diccionario.h"
+
+#include <fstream>
+#include <cctype>
+#include <algorithm>
 
 const std::string Diccionario::normalizar(const std::string& palabra) {
     std::string resultado;
@@ -15,7 +19,13 @@ const std::string Diccionario::normalizar(const std::string& palabra) {
     return resultado;
 }
 
-const int Diccionario.distanciaLevenshtein(const std::string& a, const std::string& b) {
+bool Diccionario::empiezaCon(const std::string & prefijo, const std::string & texto)
+{
+	if (prefijo.size() > texto.size()) return false;
+	return texto.compare(0, prefijo.size(), prefijo) == 0;
+}
+
+const int Diccionario::distanciaLevenshtein(const std::string& a, const std::string& b) {
     size_t n = a.size();
     size_t m = b.size();
 
@@ -42,7 +52,7 @@ bool Diccionario::cargarDesdeArchivo(const std::string& nombreArchivo) {
     std::ifstream archivo(nombreArchivo);
     
     if (!archivo.is_open()) {
-        LANZAR_ERROR(TipoError::ARCHIVO, "No se pudo abrir el fichero " + nombreFichero);
+        LANZAR_ERROR(TipoError::ARCHIVO, "No se pudo abrir el fichero " + nombreArchivo);
     }
 
     std::string palabra;
@@ -58,20 +68,21 @@ bool Diccionario::existe(const std::string& palabra) {
 
 bool Diccionario::existeRaiz(const std::string& palabra) {
     for(const auto& raiz: palabras) {
-        if(normalizar(palabra).start_with(normalizar(raiz))) {
-            return true;
-        }
+		if (empiezaCon(normalizar(palabra), normalizar(raiz))) {
+			return true;
+		}
     }
     return false;
 }
 
-bool Diccionario::existeSugerencia(const std::string palabra, int distanciaMaxima = 2) {
+bool Diccionario::existeSugerencia(const std::string palabra, int distanciaMaxima) {
     std::string p = normalizar(palabra);
 
     for(const auto& w: palabras) {
-        if((std::abs)(palabra.size() - w.size()) > distanciaMaxima) {
-            continue;
-        }
+		if (std::abs(static_cast<long long>(p.size()) - static_cast<long long>(w.size())) > distanciaMaxima)
+		{
+			continue;
+		}
         if(distanciaLevenshtein(p, w) <= distanciaMaxima) {
             return true;
         }

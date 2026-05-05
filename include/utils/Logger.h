@@ -1,5 +1,5 @@
 /**
-* @file Palabra.h
+* @file Logger.h
 * @autor Alberto Sanchoyerto
 * @fecha 2026
 * @version 1.0

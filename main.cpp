@@ -1,8 +1,8 @@
 /**
 * @file main.cpp
 */
-#include "DocumentoTexto.h"
-#include "Logger.h"
+#include "core/DocumentoTexto.h"
+#include "utils/ErrorMacros.h"
 
 #include <iostream>
 
@@ -15,7 +15,7 @@ int main() {
 
     try {
         DocumentoTexto doc;
-        doc.cargarDesdeFichero("texto.txt");
+        doc.cargarDesdeArchivo("texto.txt");
         doc.imprimir();
     }
     catch (const Error& e) {

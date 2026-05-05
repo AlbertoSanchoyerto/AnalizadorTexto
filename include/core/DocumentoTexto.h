@@ -22,13 +22,10 @@
 */
 #pragma once
 
-#ifndef DOCUMENTO_TEXTO_H
-#define DOCUMENTO_TEXTO_H
-
 #include <vector>
 #include <string>
 
-#include "MotorNLP.h"
+#include "core/MotorNPL.h"
 
 /**
 * @class Clase DocumentoTexto
@@ -40,20 +37,18 @@
 class DocumentoTexto {
     
 private:
-    std::vector < std::vector < Palabra>> parrafos:
-    MotorNLP motor;
+	std::vector < std::vector < Palabra>> parrafos;
+	MotorNLP motor;
 
     public:
     /**
     * @brief Carga del Documento de texto.
-    * @param nombreFichero, nombre del fichero de texto
+    * @param nombreArchivo, nombre del archivo de texto
     */
-    void cargarDesdeFichero(const std::string& nombreFichero);
+    void cargarDesdeArchivo(const std::string& nombreArchivo);
 
     /**
     * brief Imprime palanras etiquetadas del documento
     */
-    const void imprimir();
-}
-
-#endif // DOCUMENTO_TEXTO_H
+    void imprimir() const;
+};

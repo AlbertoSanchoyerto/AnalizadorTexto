@@ -1,0 +1,42 @@
+# Información del proyecto
+PROJECT_NAME           = "AnalizadorTexto"
+PROJECT_BRIEF          = "Documentación del proyecto en C++14"
+PROJECT_VERSION        = "1.0"
+
+# Entrada
+INPUT                  = src include
+FILE_PATTERNS          = *.cpp *.h
+RECURSIVE              = YES
+
+# Salida
+OUTPUT_DIRECTORY       = docs
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+# Extracción
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+
+# C++ settings
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+OPTIMIZE_FOR_FORTRAN   = NO
+
+# Mostrar código fuente
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+
+# Diagramas (opcional)
+HAVE_DOT               = NO
+
+# Avisos
+WARNINGS               = YES
+QUIET                  = NO
+
+# Preprocesador
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = NO
+
+# Configuración de extensión
+EXTENSION_MAPPING      = hpp=C++

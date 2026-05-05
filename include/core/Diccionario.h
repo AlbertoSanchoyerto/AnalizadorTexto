@@ -22,20 +22,14 @@
 */
 #pragma once
 
-#define DICCIONARIO_H
-#define DICCIONARIO_H
-
 #include <unordered_set>
 #include <vector>
 #include <string>
-#include <fstream>
-#include <cctype>
-#include <algorithm>
 
 /**
 * @class Diccionario
 * @brief Representa un conjunto de palabras
-* con funcionalidades de bÃºsqueda y correcciÃ³n.
+* con funcionalidades de búsqueda y corrección.
 *
 * Permite:
 * - Cargar palabras desde un archivo
@@ -46,34 +40,42 @@ class Diccionario {
     std::unordered_set < std::string > palabras; /// Conjunto de palabras
 
     /**
-    * @brief Normaliza una palabra eliminando caracteres no alfabÃ©ticos y
-    * convirtiendo a minÃºsculas.
+    * @brief Normaliza una palabra eliminando caracteres no alfabéticos y
+    * convirtiendo a minúsculas.
     * @param palabra Palabra original
     * @return Palabra normalizada
     */
     const std::string normalizar(const std::string& palabra);
 
+	/**
+	 * @brieg Comprueba si una cadena empieza igual a otra menor
+	 * @param prefijo posible de la palabra
+	 * @param palabra palabra que comprobamos si coincide con el prefijo
+	 * return true si empieza,false en caso contrario 
+	 */
+	bool empiezaCon(const std::string& prefijo, const std::string& texto);
+
     /**
     * @brief Calcula la distancia de Levenshtein entre dos cadenas.
-    * La distancia de Levenshtein mide el nÃºmero mÃ­nimo de operaciones necesarias
+    * La distancia de Levenshtein mide el número mínimo de operaciones necesarias
     * para transformar una cadena en otra.
     * Las operaciones permitidas son:
     *
-    * - InserciÃ³n de un carÃ¡cter
-    * - EliminaciÃ³n de un carÃ¡cter
-    * - SustituciÃ³n de un carÃ¡cter
+    * - Inserción de un carácter
+    * - Eliminación de un carácter
+    * - Sustitución de un carácter
     *
     * @param s1 Primera cadena de texto.
     * @param s2 Segunda cadena de texto.
-    * @return int NÃºmero mÃ­nimo de operaciones necesarias para convertir s1 en s2.
+    * @return int Número mínimo de operaciones necesarias para convertir s1 en s2.
     *
     * @note
     * Ejemplo:
-    * distanciaLevenshtein("gato", "gata") = 1 (solo una sustituciÃ³n)
+    * distanciaLevenshtein("gato", "gata") = 1 (solo una sustitución)
     * distanciaLevenshtein("kitten", "sitting") = 3
     *
     * @details
-    * Se utiliza programaciÃ³n dinÃ¡mica para construir una matriz donde:
+    * Se utiliza programación dinámica para construir una matriz donde:
     * - Las filas representan los caracteres de s1
     * - Las columnas representan los caracteres de s2
     *
@@ -83,9 +85,9 @@ class Diccionario {
     *
     *
     * dist[i][j] = min(
-    *     dist[i-1][j] + 1,        // eliminaciÃ³n
-    *     dist[i][j-1] + 1,        // inserciÃ³n
-    *     dist[i-1][j-1] + coste   // sustituciÃ³n (0 si iguales, 1 si distintos)
+    *     dist[i-1][j] + 1,        // eliminación
+    *     dist[i][j-1] + 1,        // inserción
+    *     dist[i-1][j-1] + coste   // sustitución (0 si iguales, 1 si distintos)
     * )
     */
     const int distanciaLevenshtein(const std::string& a, const std::string& b);
@@ -95,7 +97,7 @@ class Diccionario {
     /**
     * @brief Carga palabras desde un archivo de texto.
     * @param nombreArchivo Ruta del archivo
-    * @return true si se cargÃ³ correctamente, false en caso de erro
+    * @return true si se cargó correctamente, false en caso de erro
     */
     bool cargarDesdeArchivo(const std::string& nombreArchivo);
 
@@ -118,16 +120,14 @@ class Diccionario {
     /**
     * @brief comprueba si la palabra es similar a las del diccionario
     * @param pslabra palabra a comprobar
-    * @param distanciaMaxima Distancia mÃ¡xima permitida (por defecto 2)
+    * @param distanciaMaxima Distancia máxima permitida (por defecto 2)
     * return true si existe,false en caso contrario
     */
     bool existeSugerencia(const std::string palabra, int distanciaMaxima = 2);
 
     /**
-    * @brief Devuelve el nÃºmero de palabras en el diccionario.
-    * @return TamaÃ±o del diccionario
+    * @brief Devuelve el número de palabras en el diccionario.
+    * @return Tamaño del diccionario
     */
     const size_t tamano();
-}
-
-#endif // DICCIONARIO_H
+};

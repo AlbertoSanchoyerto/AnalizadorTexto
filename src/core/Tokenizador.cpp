@@ -1,7 +1,11 @@
 /**
 * @file Tokenizador.cpp
 */
-#include "core/Tokenrizador.h"
+#include <string>
+#include <vector>
+#include <regex>
+
+#include "core/Tokenizador.h"
 
 std::vector < Token > Tokenizador::tokenizar(const std::string& texto) {
     std::vector < Token > tokens;

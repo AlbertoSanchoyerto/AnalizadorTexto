@@ -24,7 +24,7 @@
 
 #include <iostream>
 
-#include "Token.h"
+#include "core/Token.h"
 
 /**
 * @class Palabra
@@ -50,5 +50,5 @@ class Palabra {
     /**
      * @brief inprime por consola la informacion de la palabra
      */
-    const void imprimir();
-}
+    void imprimir() const;
+};

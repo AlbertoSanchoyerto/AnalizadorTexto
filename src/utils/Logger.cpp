@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <sstream>
 
-#include "Logger.h"
+#include "utils/Logger.h"
 
 Logger::Logger() : nivelActual(NivelLog::DEBUG) {}
 

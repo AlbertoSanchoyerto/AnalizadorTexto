@@ -22,9 +22,13 @@
 */
 #pragma once
 
-#include "Logger.h"
+#include "utils/Error.h"
+#include "utils/Logger.h"
 
 #include <sstream>
+
+#define LANZAR_ERROR(tipo, mensaje) \
+    throw Error(tipo, mensaje, __FILE__, __LINE__, __func__)
 
 #define LOG_DEBUG(msg) \
     Logger::instancia().log(NivelLog::DEBUG, msg)

@@ -28,9 +28,9 @@
 
 #include <vector>
 
-#include "Tokenizador.h"
-#include "EtiquwtadorPGO.h"
-#include "Palabra.h"
+#include "core/Tokenizador.h"
+#include "core/EtiquetadorPGO.h"
+#include "core/Palabra.h"
 
 /**
 * @class MotorNLP
@@ -54,4 +54,5 @@ class MotorNLP {
      * @return lista de palabras etiquetadas
      */
     std::vector < Palabra > procesar(const std::string& texto, int indiceParrafo);
-}
+};
+

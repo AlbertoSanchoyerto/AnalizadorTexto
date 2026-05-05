@@ -9,7 +9,7 @@ Palabra::Palabra(const Token &t, EtiquetaPGO e, int indice) {
     indiceParrafo = indice;
 }
 
-const void Palabra::imprimir() {
+void Palabra::imprimir() const {
     std::cout << "[" << token.palabra << "] "
     << "POS=" << static_cast<int > (etiqueta)
     << " Parrafo=" << indiceParrafo

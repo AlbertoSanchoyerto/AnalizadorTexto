@@ -24,8 +24,8 @@
 
 #include <string>
 
-#include "Token.h"
-#include "Diccionario.h"
+#include "core/Token.h"
+#include "core/Diccionario.h"
 
 /**
 * @class Lexico
@@ -57,7 +57,7 @@ class Lexico {
     * @return EtiquetaPGO etiqueta.
     */
     const EtiquetaPGO obtenerEtiqueta(const std::string& palabra);
-}
+};
 
 /**
 * @class EtiquetadorPGO
@@ -74,4 +74,4 @@ class EtiquetadorPGO {
      * @return etiquetaPGO, etiqueta de la palabra
      */
     const EtiquetaPGO Etiquetar(const std::string& palabra);
-}
+};

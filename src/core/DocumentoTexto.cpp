@@ -1,17 +1,19 @@
 /**
 * @file DocumentoTexto.cpp
 */
-#include "utis/ErrorMacros.h"
+#include "utils/ErrorMacros.h"
 #include "core/DocumentoTexto.h"
 
+#include <vector>
+#include <string>
 #include <fstream>
 #include <stdexcept>
 
-void DocumentoTexto::cargarDesdeFichero(const std::string& nombreFichero) {
-    std::ifstream archivo(nombreFichero);
+void DocumentoTexto::cargarDesdeArchivo(const std::string& nombreArchivo) {
+    std::ifstream archivo(nombreArchivo);
 
     if (!archivo) {
-        LANZAR_ERROR(TipoError::ARCHIVO, "No se pudo abrir el fichero " + nombreFichero);
+        LANZAR_ERROR(TipoError::ARCHIVO, "No se pudo abrir el fichero " + nombreArchivo);
     }
 
     std::string linea;

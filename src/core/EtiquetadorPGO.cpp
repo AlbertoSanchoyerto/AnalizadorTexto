@@ -1,7 +1,9 @@
 /**
 * @file EtiquetaPGO.cpp
 */
-#include "utils/EtiquetadorPGO.h"
+#include "core/EtiquetadorPGO.h"
+
+#include <regex>
 
 Lexico::Lexico() {
     determinantes.cargarDesdeArchivo("determinantes.txt");
@@ -10,11 +12,11 @@ Lexico::Lexico() {
     advervios.cargarDesdeArchivo("advervios.txt");
 }
 
-EtiquetaPGO Lexico::obtenerEtiqueta(const std::string& palabra) const {
+const EtiquetaPGO Lexico::obtenerEtiqueta(const std::string& palabra) {
     if(determinantes.existe(palabra)) {
         return EtiquetaPGO::DETERMINANTE;
     }
-    else if(preprosiciones.existe(palabra)) {
+    else if(preposiciones.existe(palabra)) {
         return EtiquetaPGO::PREPOSICION;
     }
     else if(advervios.existe(palabra)) {
@@ -33,6 +35,6 @@ EtiquetaPGO Lexico::obtenerEtiqueta(const std::string& palabra) const {
     }
 }
 
-const EtiquetaPGO EtiquetarPGO::Etiquetar(const std::string& palabra) {
+const EtiquetaPGO EtiquetadorPGO::Etiquetar(const std::string& palabra) {
     return lexico.obtenerEtiqueta(palabra);
 }
