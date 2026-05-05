@@ -29,8 +29,8 @@ AnalizadorNLP/
 
 ## ⚙️ Requisitos
 
-- C++17 o superior
-- CMake ≥ 3.16
+- C++14 o superior
+- CMake ≥ 3.10
 
 ---
 
@@ -48,7 +48,7 @@ make
 ## 🧪 Ejemplo de uso
 
 ```cpp
-#include "nlp/DocumentoTexto.h"
+#include "core/DocumentoTexto.h"
 #include "utils/Logger.h"
 
 int main() {
