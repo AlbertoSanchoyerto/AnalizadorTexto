@@ -1,4 +1,4 @@
-# 🧠 AnalizadorNLP
+# 🧠 AnalizadorTexto
 
 Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenización, etiquetado gramatical (PGO), manejo de errores estructurado y sistema de logging thread-safe.
 
@@ -9,7 +9,7 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 - 🔤 Tokenización avanzada (soporte Unicode con ICU opcional)
 - 🏷️ Etiquetado gramatical (PGO)  
 - 📚 Diccionarios externos configurables
-- ⚠️ Sistema de errores tipado (`ErrorNLP`)
+- ⚠️ Sistema de errores tipado (`Error`)
 - 📝 Logging thread-safe
 - ⚙️ Build con CMake
 - 🧩 Arquitectura modular y escalable
@@ -18,7 +18,7 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 
 ## 📁 Estructura del proyecto
 
-AnalizadorNLP/
+AnalizadorTexto/
 ├── include/
 ├── src/
 ├── data/
@@ -53,10 +53,10 @@ make --install
 #include "utils/Logger.h"
 
 int main() {
-    Logger::instancia().setArchivo("app.log");
+    Logger::instancia().setArchivo("log/app.log");
 
     DocumentoTexto doc;
-    doc.cargarDesdeFichero("data/texto.txt");
+    doc.cargarDesdeArchivo("data/texto.txt");
     doc.imprimir();
 }
 ```
