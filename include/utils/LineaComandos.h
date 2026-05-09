@@ -65,4 +65,4 @@ class LineaComandos {
     * Si el comando no existe, muestra un mensaje de error.
     */
     void ejecutar();
-};Linea de comandos 
+};
