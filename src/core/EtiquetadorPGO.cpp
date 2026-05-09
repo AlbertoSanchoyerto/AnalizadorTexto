@@ -6,14 +6,17 @@
 #include <regex>
 
 Lexico::Lexico() {
-    determinantes.cargarDesdeArchivo("determinantes.txt");
-    preposiciones.cargarDesdeArchivo("preposiciones.txt");
-    vervos.cargarDesdeArchivo("vervos.txt");
-    advervios.cargarDesdeArchivo("advervios.txt");
+    determinantes.cargarDesdeArchivo("data/determinantes.txt");
+    preposiciones.cargarDesdeArchivo("data/preposiciones.txt");
+    vervos.cargarDesdeArchivo("data/vervos.txt");
+    advervios.cargarDesdeArchivo("data/advervios.txt");
 }
 
 const EtiquetaPGO Lexico::obtenerEtiqueta(const std::string& palabra) {
-    if(determinantes.existe(palabra)) {
+	if (std::regex_match(palabra, std::regex("^[0-9]+$"))) {
+		return EtiquetaPGO::NUMERO;
+	}
+    else if(determinantes.existe(palabra)) {
         return EtiquetaPGO::DETERMINANTE;
     }
     else if(preposiciones.existe(palabra)) {
@@ -26,12 +29,7 @@ const EtiquetaPGO Lexico::obtenerEtiqueta(const std::string& palabra) {
         return EtiquetaPGO::VERBO;
     }
     else {
-        if (std::regex_match(palabra, std::regex("^[0-9]+$"))) {
-            return EtiquetaPGO::NUMERO;
-        }
-        else {
-            return EtiquetaPGO::DESCONOCIDO;
-        }
+        return EtiquetaPGO::DESCONOCIDO;
     }
 }
 

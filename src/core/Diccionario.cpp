@@ -19,9 +19,10 @@ const std::string Diccionario::normalizar(const std::string& palabra) {
     return resultado;
 }
 
-bool Diccionario::empiezaCon(const std::string & prefijo, const std::string & texto)
+bool Diccionario::empiezaCon(const std::string & texto, const std::string & prefijo)
 {
-	if (prefijo.size() > texto.size()) return false;
+	if (prefijo.size() > texto.size())
+		return false;
 	return texto.compare(0, prefijo.size(), prefijo) == 0;
 }
 
