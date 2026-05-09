@@ -21,6 +21,52 @@ enum class EtiquetaPGO {
     DESCONOCIDO
 };
 
+class DescripcionPGO {
+private:
+	std::string descripcionPGO;
+
+public:
+	// Constructor
+	DescripcionPGO(EtiquetaPGO e) {
+
+		switch (e) {
+
+		case EtiquetaPGO::SUSTANTIVO: {
+			descripcionPGO = "Sustantivo";
+			break;
+		}
+		case EtiquetaPGO::VERBO: {
+			descripcionPGO = "Verbo";
+			break;
+		}
+		case EtiquetaPGO::DETERMINANTE: {
+			descripcionPGO = "Determinante";
+			break;
+		}
+		case EtiquetaPGO::PREPOSICION: {
+			descripcionPGO = "Preposición";
+			break;
+		}
+		case EtiquetaPGO::ADVERBIO: {
+			descripcionPGO = "Adverbio";
+			break;
+		}
+		case EtiquetaPGO::NUMERO: {
+			descripcionPGO = "Número";
+			break;
+		}
+		default: {
+			descripcionPGO = "Desconocido";
+			break;
+		}
+		}
+	}
+
+	std::string descripcion() const {
+		return descripcionPGO;
+	}
+};
+
 /**
  * brief Estructura token de una palabra
  * 
