@@ -36,7 +36,7 @@ AnalizadorTexto/
 
 ## 🔧 Instalación de fuentes
 
-git clone https://github.com/tuusuario/AnalizadorTexto.git
+git clone https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git
 cd AnalizadorTexto
 mkdir build
 cd build
