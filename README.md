@@ -42,7 +42,7 @@ cd AnalizadorTexto.
 mkdir build.   
 cd build.   
 cmake ..    
-'''
+```
 
 ---
 
