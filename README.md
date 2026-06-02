@@ -63,4 +63,3 @@ cmake ..
 ## 📄 Licencia
 
 MIT License
-![License](LICENSE)
