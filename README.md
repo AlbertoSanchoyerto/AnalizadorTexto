@@ -18,7 +18,7 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 
 ## 📁 Estructura del proyecto
 
-AnalizadorTexto/  
+AnalizadorTexto/. 
 ├── include/. 
 ├── src/. 
 ├── data/. 
