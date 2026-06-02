@@ -1,5 +1,9 @@
 # 🧠 AnalizadorTexto
 
+![C++](https://img.shields.io/badge/C%2B%2B-14-blue)
+![CMake](https://img.shields.io/badge/CMake-3.10+-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenización, etiquetado gramatical (PGO), manejo de errores estructurado y sistema de logging thread-safe.
 
 ---
