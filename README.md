@@ -36,7 +36,7 @@ AnalizadorTexto/.
 
 ## 🔧 Instalación de fuentes
 
-'''bash.  
+```bash
 git clone.    https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git.   
 cd AnalizadorTexto.   
 mkdir build.   
@@ -48,7 +48,7 @@ cmake ..
 
 ## 🧪 Ejemplo de uso
 
-```bash.  
+```bash
 > AnalizadorTexto --help
 > AnalizadorTexto --log ficheroLog
 > AnalizadorTexto --archivo documento.txt
