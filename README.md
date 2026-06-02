@@ -18,32 +18,30 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 
 ## 📁 Estructura del proyecto
 
-AnalizadorTexto/. 
-├── include/. 
-├── src/. 
-├── data/. 
-├── CMakeLists.txt. 
-└── main.cpp. 
+AnalizadorTexto/.  
+├── include/.  
+├── src/.  
+├── data/.  
+├── CMakeLists.txt.  
+└── main.cpp.  
 
 ---
 
 ## ⚙️ Requisitos
 
-- C++14 o superior. 
-- CMake ≥ 3.10. 
+- C++14 o superior.  
+- CMake ≥ 3.10.  
 
 ---
 
 ## 🔧 Instalación de fuentes
 
 '''bash
-git clone https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git
-cd AnalizadorTexto
-mkdir build
-cd build
-cmake ..
-make
-make --install
+git clone.    https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git.   
+cd AnalizadorTexto.   
+mkdir build.   
+cd build.   
+cmake ..    
 '''
 
 ---
