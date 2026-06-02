@@ -36,6 +36,7 @@ AnalizadorTexto/.
 
 ## 🔧 Instalación de fuentes
 
+'''bash
 git clone https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git
 cd AnalizadorTexto
 mkdir build
@@ -43,22 +44,16 @@ cd build
 cmake ..
 make
 make --install
+'''
 
 ---
 
 ## 🧪 Ejemplo de uso
 
-```cpp
-#include "core/DocumentoTexto.h"
-#include "utils/Logger.h"
-
-int main() {
-    Logger::instancia().setArchivo("log/app.log");
-
-    DocumentoTexto doc;
-    doc.cargarDesdeArchivo("data/texto.txt");
-    doc.imprimir();
-}
+```bash
+> AnalizadorTexto --help
+> AnalizadorTexto --log ficheroLog
+> AnalizadorTexto --archivo documento.txt
 ```
 
 ---
