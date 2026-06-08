@@ -13,17 +13,10 @@ const std::string Diccionario::normalizar(const std::string& palabra) {
 
     for (char c: palabra) {
         if (std::isalpha(static_cast<unsigned char > (c))) {
-            resultado += std::tolower(static_cast<unsigned char > (c));
+            resultado += static_cast<char>(std::tolower(static_cast<unsigned char > (c)));
         }
     }
     return resultado;
-}
-
-bool Diccionario::empiezaCon(const std::string & texto, const std::string & prefijo)
-{
-	if (prefijo.size() > texto.size())
-		return false;
-	return texto.compare(0, prefijo.size(), prefijo) == 0;
 }
 
 const int Diccionario::distanciaLevenshtein(const std::string& a, const std::string& b) {
@@ -49,6 +42,38 @@ const int Diccionario::distanciaLevenshtein(const std::string& a, const std::str
     return dp[n][m];
 }
 
+bool Diccionario::esIgual(const std::string & a, const std::string & b)
+{
+	return normalizar(a) == normalizar(b);
+}
+
+bool Diccionario::empiezaPor(const std::string & palabra, const std::string & prefijo)
+{
+	if (prefijo.size() > palabra.size()) {
+		return false;
+	}
+
+	return normalizar(palabra).compare(0, prefijo.size(), normalizar(prefijo)) == 0;
+}
+
+bool Diccionario::terminaPor(const std::string & palabra, const std::string & sufijo)
+{
+	if (sufijo.size() > palabra.size()) {
+		return false;
+	}
+
+	return normalizar(palabra).compare(palabra.size() - sufijo.size(), sufijo.size(), sufijo) == 0;
+}
+
+bool Diccionario::contiene(const std::string & palabra, const std::string & subcadena)
+{
+	if (subcadena.size() > palabra.size()) {
+		return false;
+	}
+
+	return normalizar(palabra).find(normalizar(subcadena)) != std::string::npos;
+}
+
 bool Diccionario::cargarDesdeArchivo(const std::string& nombreArchivo) {
     std::ifstream archivo(nombreArchivo);
     
@@ -63,17 +88,48 @@ bool Diccionario::cargarDesdeArchivo(const std::string& nombreArchivo) {
     return true;
 }
 
-bool Diccionario::existe(const std::string& palabra) {
-    return palabras.count(normalizar(palabra)) > 0;
-}
+bool Diccionario::existe(const std::string & palabra)
+{
+	std::string patron;
 
-bool Diccionario::existeRaiz(const std::string& palabra) {
-    for(const auto& raiz: palabras) {
-		if (empiezaCon(normalizar(palabra), normalizar(raiz))) {
-			return true;
+	for (const auto& pt : palabras) {
+
+		bool empieza = !pt.empty() && pt.front() == '*';
+		bool termina = !pt.empty() && pt.back() == '*';
+
+		if (empieza && termina) {
+
+			patron = pt.substr(1, pt.size() - 2);
+
+			if (contiene(palabra, patron)) {
+				return true;
+			}
 		}
-    }
-    return false;
+		else if (empieza) {
+
+			patron = pt.substr(0, pt.size() -1);
+
+			if (empiezaPor(palabra, patron)) {
+				return true;
+			}
+		}
+		else if (termina) {
+
+			patron = pt.substr(1);
+
+			if (terminaPor(palabra, patron)) {
+				return true;
+			}
+		}
+		else {
+
+			if (esIgual(palabra, pt)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 bool Diccionario::existeSugerencia(const std::string palabra, int distanciaMaxima) {

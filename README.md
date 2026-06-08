@@ -1,9 +1,5 @@
 # 🧠 AnalizadorTexto
 
-![C++](https://img.shields.io/badge/C%2B%2B-14-blue)
-![CMake](https://img.shields.io/badge/CMake-3.10+-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-
 Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenización, etiquetado gramatical (PGO), manejo de errores estructurado y sistema de logging thread-safe.
 
 ---
@@ -11,7 +7,7 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 ## 🚀 Características
 
 - 🔤 Tokenización avanzada (soporte Unicode con ICU opcional)
-- 🏷️ Etiquetado gramatical (PGO)  
+- 🏷️ Etiquetado gramatical (EtiquetaPGO)  
 - 📚 Diccionarios externos configurables
 - ⚠️ Sistema de errores tipado (`Error`)
 - 📝 Logging thread-safe
@@ -22,44 +18,54 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 
 ## 📁 Estructura del proyecto
 
-AnalizadorTexto/.  
-├── include/.  
-├── src/.  
-├── data/.  
-├── CMakeLists.txt.  
-└── main.cpp.  
+AnalizadorTexto/  
+├── include/  
+├── src/  
+├── data/  
+├── CMakeLists.txt  
+└── main.cpp  
 
 ---
 
 ## ⚙️ Requisitos
 
-- C++14 o superior.  
-- CMake ≥ 3.10.  
+- C++14 o superior
+- CMake ≥ 3.10
 
 ---
 
-## 🔧 Instalación de fuentes
+## 🔧 Instalación
 
-```bash
-git clone.    https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git.   
-cd AnalizadorTexto.   
-mkdir build.   
-cd build.   
-cmake ..    
-```
+git clone https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git  
+cd AnalizadorTexto  
+mkdir build  
+cd build  
+cmake ..  
+make  
 
 ---
 
 ## 🧪 Ejemplo de uso
 
-```bash
-> AnalizadorTexto --help
-> AnalizadorTexto --log ficheroLog
-> AnalizadorTexto --archivo documento.txt
+```Bash
+
+AnalizadorTexto --archivo data/documento.txt  
+AnalizadorTexto --help  
 ```
+
+Comandos:  
+  --archivo [fichero]   Realizar analisis del texto del fichero .txt  
+  --log [ficheroLog]    Especifica un fichero .log  
+  --help                Mostrar ayuda  
 
 ---
 
 ## 📄 Licencia
 
-MIT License
+MIT License.
+
+Copyright (c) 2026 Alberto Sanchoyerto
+
+Consulte el archivo [LICENSE](LICENSE) para obtener el texto completo.
+
+\include LICENSE

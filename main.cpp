@@ -9,15 +9,29 @@
 #include <string>
 #include <direct.h>
 
+/**
+ * @brief Principal de la aplicación
+ *
+ * - Inicia los comandos de linea
+ * - Interpreta los comandos introducidos por el usuario
+ *
+ * @details
+ * Los comando incluidos son
+ * - **help**, la ayuda, siempre tiene que existir
+ * - **log**, para definir el fichero log que queremos, si no, nos crea uno por defecto
+ * - **archivo**, para introducir el fichero, ruta completa para procesar el analisis de texto
+ *
+ * @note Por cada nuevo comando, ir incluyendolo en este fuente con el código correspondiente
+ */
 int main(int argc, char* argv[]) {
 
 	LineaComandos lineaComandos(argc, argv);
 
 	lineaComandos.ponerComando("--help", [](const std::vector < std::string>&) {
 		std::cout << "Comandos:\n";
-		std::cout << "  --archivo <ruta>\n";
-		std::cout << "  --log <archivo>\n";
-		std::cout << "  --help\n";
+		std::cout << "  --archivo ruta\tRealizar analisis del texto del fichero .txt\n";
+		std::cout << "  --log archivo \tEspecifica un fichero .log\n";
+		std::cout << "  --help        \tMostrar ayuda\n";
 	});
 
 	lineaComandos.ponerComando("--log", [](const std::vector < std::string>& args) {

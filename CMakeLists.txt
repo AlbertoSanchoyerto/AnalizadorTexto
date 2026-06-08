@@ -36,6 +36,7 @@ add_executable(${PROJECT_NAME}
 # ===== PLATAFORMAS =====
 
 if (MSVC)
+	add_compile_options(/utf-8)
     target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 	target_compile_options(${PROJECT_NAME} PRIVATE /std:c++14)
 else()

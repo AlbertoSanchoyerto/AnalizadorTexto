@@ -1,30 +1,21 @@
 /**
 * @file Error.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
-*
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Contiene el error producido para su consulta
 */
 #pragma once
 
 #include <exception>
 #include <string>
 
+/**
+ * @enum TipoError
+ * @brief Tipos de error básicos
+ */
 enum class TipoError {
     LEXICO,
     SINTACTICO,
@@ -35,10 +26,10 @@ enum class TipoError {
 
 /**
  * @class Error
+ * @brief Manejo de errores
  * 
- * @brief Clase para el manejo de errores
- * 
- * 
+ * - Establece el error actual
+ * - Obtiene el ultimo error producido
  */
 class Error : public std::exception {
 private:
@@ -52,9 +43,23 @@ private:
     void construirMensaje();
 
 public:
+	/**
+	 * @brief Constructor de Error
+	 * @param tipo de error producido
+	 * @param mensaje descripción del error producido
+	 * @param archivo donde ocurre el error
+	 * @param linea donde ocurre el error
+	 * @param funcion donde ocurre el error
+	 */
     Error(TipoError tipo, const std::string& mensaje, const std::string& archivo, int linea, const std::string& funcion);
 
+	/**
+	 * @brief obtiene una descripcion del error produccido
+	 */
     const char* what() const noexcept override;
 
+	/**
+	 * @brief obtiene el tipo de error producido
+	 */
     TipoError getTipo() const;
 };

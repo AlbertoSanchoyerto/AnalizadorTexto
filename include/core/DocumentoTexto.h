@@ -1,24 +1,11 @@
 /**
-* @file Diccionario.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @file DocumentoTexto.h
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
-*
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Manejo de documentos de texto para su analisis
 */
 #pragma once
 
@@ -28,7 +15,7 @@
 #include "core/MotorNPL.h"
 
 /**
-* @class Clase DocumentoTexto
+* @class DocumentoTexto
 * @brief Maneja documentos de texto completos
 *
 * - Carga del fichero de texto.
@@ -43,12 +30,13 @@ private:
     public:
     /**
     * @brief Carga del Documento de texto.
-    * @param nombreArchivo, nombre del archivo de texto
+    * @param nombreArchivo ruta completa del archivo
+	* @throw lanza un error si no se puede abrir el archivo
     */
     void cargarDesdeArchivo(const std::string& nombreArchivo);
 
     /**
-    * brief Imprime palanras etiquetadas del documento
+    * @brief Imprime palanras etiquetadas del documento
     */
     void imprimir() const;
 };
