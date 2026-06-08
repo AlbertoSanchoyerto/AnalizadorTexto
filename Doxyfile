@@ -1,17 +1,24 @@
 # Información del proyecto
 PROJECT_NAME           = "AnalizadorTexto"
-PROJECT_BRIEF          = "Documentación del proyecto en C++14"
-PROJECT_VERSION        = "1.0"
+PROJECT_BRIEF          = "Documentación del Analizador de Texto"
 
 # Entrada
-INPUT                  = src include
-FILE_PATTERNS          = *.cpp *.h
+INPUT                  = src include .
+FILE_PATTERNS          = *.cpp *.h *.md LICENSE
 RECURSIVE              = YES
+
+MARKDOWN_SUPPORT       = YES
+USE_MDFILE_AS_MAINPAGE = README.md
 
 # Salida
 OUTPUT_DIRECTORY       = docs
 GENERATE_HTML          = YES
 GENERATE_LATEX         = NO
+OUTPUT_LANGUAGE        = Spanish
+
+GENERATE_RTF           = YES
+RTF_HYPERLINKS         = YES
+RTF_OUTPUT             = rtf
 
 # Extracción
 EXTRACT_ALL            = NO
@@ -19,7 +26,7 @@ EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = NO
 
 # C++ settings
-OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_FOR_C  = YES
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
 

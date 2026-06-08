@@ -1,7 +1,11 @@
 /**
  * @file Token.h
- * 
- * @brief Estructura y etiquetados utiles
+ * @author Alberto Sanchoyerto
+ * @date 2026
+ * @version 1.0
+ * @copyright (c) 2026 Alberto Sanchoyerto
+ *
+ * @brief Estructuras y etiquetados utiles
  */
 #pragma once
 
@@ -13,46 +17,126 @@
 */
 enum class EtiquetaPGO {
     SUSTANTIVO,
-    VERBO,
-    DETERMINANTE,
-    PREPOSICION,
-    ADVERBIO,
+	ADJETIVO,
+	ADVERBIO,
+	ARTICULO,
+	VERBO,
+	PREPOSICION,
+    CONJUCION,
     NUMERO,
     DESCONOCIDO
 };
 
+/**
+* @enum NumeroPGO
+* @brief tipos numerales de la palabra
+*/
+enum class NumeroPGO {
+	SINGULAR,
+	PLURAL
+};
+
+/**
+* @enum GeneroPGO
+* @brief generos de las palabra
+*/
+enum class GeneroPGO {
+	MASCULINO,
+	FEMENINO,
+	INDEFINIDO
+};
+
+/**
+ * @class DescripcionPGO
+ * @brief Relaciona el c贸digo de los tipos con sus descripciones
+ */
 class DescripcionPGO {
 private:
 	std::string descripcionPGO;
 
 public:
-	// Constructor
+	/**
+	 * @brief Constructor de descripcion con etiquetaPGO
+	 * @param e codigo EtiquetaPGO
+	 */
 	DescripcionPGO(EtiquetaPGO e) {
-
 		switch (e) {
+			case EtiquetaPGO::ADJETIVO: {
+				descripcionPGO = "Adjetivo";
+				break;
+			}
+			case EtiquetaPGO::ADVERBIO: {
+				descripcionPGO = "Adverbio";
+				break;
+			}
+			case EtiquetaPGO::ARTICULO: {
+				descripcionPGO = "Articulo";
+				break;
+			}
+			case EtiquetaPGO::VERBO: {
+				descripcionPGO = "Verbo";
+				break;
+			}
+			case EtiquetaPGO::PREPOSICION: {
+				descripcionPGO = "Preposici贸n";
+				break;
+			}
+			case EtiquetaPGO::CONJUCION: {
+				descripcionPGO = "Conjucci贸n";
+				break;
+			}
+			case EtiquetaPGO::SUSTANTIVO: {
+				descripcionPGO = "Sustantivo";
+				break;
+			}
+			case EtiquetaPGO::NUMERO: {
+				descripcionPGO = "N煤mero";
+				break;
+			}
+			default: {
+				descripcionPGO = "Desconocido";
+				break;
+			}
+		}
+	}
 
-		case EtiquetaPGO::SUSTANTIVO: {
-			descripcionPGO = "Sustantivo";
+	/**
+	 * @brief Constructor de descripcion con NumeroPGO
+	 * @param n codigo NumeroPGO
+	 */
+	DescripcionPGO(NumeroPGO n) {
+		switch (n) {
+			case NumeroPGO::SINGULAR: {
+				descripcionPGO = "Singular";
+				break;
+			}
+			case NumeroPGO::PLURAL: {
+				descripcionPGO = "Plural";
+				break;
+			}
+			default: {
+				descripcionPGO = "Desconocido";
+				break;
+			}
+		}
+	}
+
+	/**
+	 * @brief Constructor de descripcion con GeneroPGO
+	 * @param g codigo GeneroPGO
+	 */
+	DescripcionPGO(GeneroPGO g) {
+		switch (g) {
+		case GeneroPGO::MASCULINO: {
+			descripcionPGO = "Masculino";
 			break;
 		}
-		case EtiquetaPGO::VERBO: {
-			descripcionPGO = "Verbo";
+		case GeneroPGO::FEMENINO: {
+			descripcionPGO = "Femenino";
 			break;
 		}
-		case EtiquetaPGO::DETERMINANTE: {
-			descripcionPGO = "Determinante";
-			break;
-		}
-		case EtiquetaPGO::PREPOSICION: {
-			descripcionPGO = "Preposici髇";
-			break;
-		}
-		case EtiquetaPGO::ADVERBIO: {
-			descripcionPGO = "Adverbio";
-			break;
-		}
-		case EtiquetaPGO::NUMERO: {
-			descripcionPGO = "N鷐ero";
+		case GeneroPGO::INDEFINIDO: {
+			descripcionPGO = "Indefinido";
 			break;
 		}
 		default: {
@@ -62,24 +146,23 @@ public:
 		}
 	}
 
+	/**
+	 * @brief Obtiene la descripcion correpondiente al c贸digo
+	 * @return devuelve la descripcion correspondiente al codigo
+	 */
 	std::string descripcion() const {
 		return descripcionPGO;
 	}
 };
 
 /**
- * brief Estructura token de una palabra
- * 
+ * @brief Estructura token de una palabra
+ *
  * Estructura de una palabra dividida en;
- * 
- * - prefijo, signos al inicio de la palabra.
- * - palabra, la palabra en si, puede tener guion y/o apostrofe.
- * - sufijo, signos al final de la palabra.
- * - separador, espacio entre palabras.
  */
 struct Token {
-    std::string prefijo;
-    std::string palabra;
-    std::string sufijo;
-    std::string separador;
+    std::string prefijo; /**< prefijo signos al inicio de la palabra */
+    std::string palabra; /**< palabra la palabra en si, puede tener guion y/o apostrofe */
+    std::string sufijo; /**< sufijo signos al final de la palabra */
+    std::string separador; /**< @brief separador entre palabras */
 };

@@ -1,28 +1,12 @@
 /**
-* @file MotorNPL
-* @brief Un analizafor de texto simple,
-* de un texto txt extrae su grupo de palabras
-* etiquetadas por lexico utilizando
-* diccionarios de palabras
-*
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @file MotorNPL.h
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
-*
 * @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Un analizafor de texto simple, de un texto txt extrae su grupo de palabras
+* etiquetadas por lexico utilizando diccionarios de palabras
 */
 #pragma once
 
@@ -34,7 +18,7 @@
 
 /**
 * @class MotorNLP
-* @brief motor para procesar texto y
+* @brief Motor para procesar texto y
 * convertirlo en palabras etiquetadas PGO
 * 
 * - Tokenizador que transforma el texto en palabras
@@ -49,9 +33,9 @@ class MotorNLP {
     /**
      * @brief Transforma un parrafo en una lista de palabras etiquetadas PGO
      * 
-     * @param texto, parrafo de texto
-     * @param int indice parrafo
-     * @return lista de palabras etiquetadas
+     * @param texto del parrafo a procesar
+     * @param indiceParrafo que se encuentra
+     * @return lista de palabras procesadas
      */
     std::vector < Palabra > procesar(const std::string& texto, int indiceParrafo);
 };

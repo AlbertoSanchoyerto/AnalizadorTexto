@@ -1,24 +1,16 @@
 /**
 * @file ErrorMacros.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
-* @version 1.0
+* @author Alberto Sanchoyerto
+* @date 2026
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
+* @brief Grupo de macros para utilizar el sistema de errores
 *
-* @license MIT License
+* Con estas marcos podemos iniciar un error y escribir en un log
+* el tipo de errores que se esten produciendo.
 *
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* Hay una macro para lanzar el error y cuatro para escribir en el log
+* según el nivel de error que se estime del mismo.
 */
 #pragma once
 
@@ -27,17 +19,39 @@
 
 #include <sstream>
 
+/**
+ * @brief Lanza una excepcion de error
+ * @param tipo de error
+ * @param mensaje de error
+ * @throw excepcion con el tipo, mensaje, fichero, linea y funcion
+ */
 #define LANZAR_ERROR(tipo, mensaje) \
     throw Error(tipo, mensaje, __FILE__, __LINE__, __func__)
 
-#define LOG_DEBUG(msg) \
-    Logger::instancia().log(NivelLog::DEBUG, msg)
+/**
+ * @brief Crea una instancia de error de depuracion
+ * @param mensaje del error
+ */
+#define LOG_DEBUG(mensaje) \
+    Logger::instancia().log(NivelLog::DEBUG, mensaje)
 
-#define LOG_INFO(msg) \
-    Logger::instancia().log(NivelLog::INFO, msg)
+/**
+ * @brief Crea una instancia de error informativo
+ * @param mensaje del error
+ */
+#define LOG_INFO(mensaje) \
+    Logger::instancia().log(NivelLog::INFO, mensaje)
 
-#define LOG_WARNING(msg) \
-    Logger::instancia().log(NivelLog::WARNING, msg)
+/**
+ * @brief Crea una instancia de error de aviso
+ * @param mensaje del error
+ */
+#define LOG_WARNING(mensaje) \
+    Logger::instancia().log(NivelLog::WARNING, mensaje)
 
-#define LOG_ERROR(msg) \
-    Logger::instancia().log(NivelLog::ERROR, msg)
+/**
+ * @brief Crea una instancia de error critico
+ * @param mensaje del error
+ */
+#define LOG_ERROR(mensaje) \
+    Logger::instancia().log(NivelLog::ERROR, mensaje)

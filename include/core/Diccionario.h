@@ -1,24 +1,11 @@
 /**
 * @file Diccionario.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
-*
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Conjunto de palabras para utilizar en busquedas en textos
 */
 #pragma once
 
@@ -28,54 +15,46 @@
 
 /**
 * @class Diccionario
-* @brief Representa un conjunto de palabras
-* con funcionalidades de b˙squeda y correcciÛn.
+* @brief Representa un conjunto de palabras con funcionalidades de b√∫squeda.
 *
 * Permite:
-* - Cargar palabras desde un archivo
-* - Verificar existencia de palabras o su comienzo de la palabra
+* - Cargar las palabras del diccionario desde un archivo
+* - Verifica la existencia de la palabra con alguna de las palabras del diccionario
+* - Verifica por igualdad exacta
+* - Verifica por similitud (seg√∫n distancia Levenshtein)
+* - Verifica si empieza igual (patr√≥n: asterisco al final de la palabra)
+* - Verifica si termina igual (patr√≥n: asterisco al inicio de la palabra)
+* - Verifica si esta contenido en otra (patr√≥n: asterisco al inicio y al final de la palabra)
 */
 class Diccionario {
     private:
     std::unordered_set < std::string > palabras; /// Conjunto de palabras
 
     /**
-    * @brief Normaliza una palabra eliminando caracteres no alfabÈticos y
-    * convirtiendo a min˙sculas.
+    * @brief Normaliza una palabra eliminando caracteres no alfab√©ticos y
+    * convirtiendo a min√∫sculas.
     * @param palabra Palabra original
     * @return Palabra normalizada
     */
     const std::string normalizar(const std::string& palabra);
 
-	/**
-	 * @brieg Comprueba si una cadena empieza igual a otra menor
-	 * @param prefijo posible de la palabra
-	 * @param palabra palabra que comprobamos si coincide con el prefijo
-	 * return true si empieza,false en caso contrario 
-	 */
-	bool empiezaCon(const std::string& prefijo, const std::string& texto);
-
     /**
     * @brief Calcula la distancia de Levenshtein entre dos cadenas.
-    * La distancia de Levenshtein mide el n˙mero mÌnimo de operaciones necesarias
+    * La distancia de Levenshtein mide el n√∫mero m√≠nimo de operaciones necesarias
     * para transformar una cadena en otra.
     * Las operaciones permitidas son:
     *
-    * - InserciÛn de un car·cter
-    * - EliminaciÛn de un car·cter
-    * - SustituciÛn de un car·cter
-    *
-    * @param s1 Primera cadena de texto.
-    * @param s2 Segunda cadena de texto.
-    * @return int N˙mero mÌnimo de operaciones necesarias para convertir s1 en s2.
+    * - Inserci√≥n de un car√°cter
+    * - Eliminaci√≥n de un car√°cter
+    * - Sustituci√≥n de un car√°cter
     *
     * @note
     * Ejemplo:
-    * distanciaLevenshtein("gato", "gata") = 1 (solo una sustituciÛn)
+    * distanciaLevenshtein("gato", "gata") = 1 (solo una sustituci√≥n)
     * distanciaLevenshtein("kitten", "sitting") = 3
     *
     * @details
-    * Se utiliza programaciÛn din·mica para construir una matriz donde:
+    * Se utiliza programaci√≥n din√°mica para construir una matriz donde:
     * - Las filas representan los caracteres de s1
     * - Las columnas representan los caracteres de s2
     *
@@ -84,50 +63,78 @@ class Diccionario {
     * - Los primeros j caracteres de s2
     *
     *
-    * dist[i][j] = min(
-    *     dist[i-1][j] + 1,        // eliminaciÛn
-    *     dist[i][j-1] + 1,        // inserciÛn
-    *     dist[i-1][j-1] + coste   // sustituciÛn (0 si iguales, 1 si distintos)
-    * )
+    * dist[i][j] = min(  
+    *     dist[i-1][j] + 1,        // eliminaci√≥n  
+    *     dist[i][j-1] + 1,        // inserci√≥n  
+    *     dist[i-1][j-1] + coste   // sustituci√≥n (0 si iguales, 1 si distintos)  
+    * )  
+	*
+	* @param s1 Primera cadena de texto.
+    * @param s2 Segunda cadena de texto.
+    * @return int N√∫mero m√≠nimo de operaciones necesarias para convertir s1 en s2.
+	*
     */
-    const int distanciaLevenshtein(const std::string& a, const std::string& b);
+    const int distanciaLevenshtein(const std::string& s1, const std::string& s2);
+
+	/**
+	 * @brief Comprueba si dos palabras son iguales
+	 * @param a palabra a comparar
+	 * @param b palabra con la que comparar
+	 * @return true si es asi, si no false
+	 */
+	bool esIgual(const std::string& a, const std::string& b);
+
+	/**
+	 * @brief Comprueba si una palabra empieza con el prefijo
+	 * @param palabra a comparar
+	 * @param prefijo con el que puede empezar
+	 * @return true si es asi, si no false
+	 */
+	bool empiezaPor(const std::string& palabra, const std::string& prefijo);
+
+	/**
+	 * @brief Comprueba si una palabra termina con el sufijo
+	 * @param palabra a comparar
+	 * @param sufijo con el que puede terminar
+	 * @return true si es asi, si no false
+	*/
+	bool terminaPor(const std::string& palabra, const std::string& sufijo);
+
+	/**
+	 * @brief Comprueba si una palabra contiene una subcadena
+	 * @param palabra a comparar
+	 * @param subcadena que puede contener
+	 * @return true si es asi, si no false
+	 */
+	bool contiene(const std::string& palabra, const std::string& subcadena);
 
     public:
 
     /**
     * @brief Carga palabras desde un archivo de texto.
-    * @param nombreArchivo Ruta del archivo
-    * @return true si se cargÛ correctamente, false en caso de erro
+    * @param nombreArchivo ruta completa del archivo
+    * @return true si se carg√≥ correctamente, false en caso de error
     */
     bool cargarDesdeArchivo(const std::string& nombreArchivo);
 
     /**
-    * @brief Comprueba si una palabra existe
-    *en el diccionario.
-    * @param palabra Palabra a buscar
+    * @brief Comprueba si una palabra existe en el diccionario.
+    * @param palabra a buscar
     * @return true si existe, false en caso contrario
     */
     bool existe(const std::string& palabra);
 
     /**
-    * @brief Comprueba si la raiz de la palabra
-    * existe en el diccionario.
-    * @param palabra Palabra a buscar
-    * @return true si existe,false en caso contrario
-    */
-    bool existeRaiz(const std::string& palabra);
-
-    /**
     * @brief comprueba si la palabra es similar a las del diccionario
-    * @param pslabra palabra a comprobar
-    * @param distanciaMaxima Distancia m·xima permitida (por defecto 2)
-    * return true si existe,false en caso contrario
+    * @param palabra a comprobar
+    * @param distanciaMaxima distancia m√°xima permitida (por defecto 2)
+    * @return true si es asi, si no false
     */
     bool existeSugerencia(const std::string palabra, int distanciaMaxima = 2);
 
     /**
-    * @brief Devuelve el n˙mero de palabras en el diccionario.
-    * @return TamaÒo del diccionario
+    * @brief Devuelve el n√∫mero de palabras en el diccionario.
+    * @return Tama√±o del diccionario en numero de palabras
     */
     const size_t tamano();
 };

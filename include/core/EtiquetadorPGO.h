@@ -1,24 +1,11 @@
 /**
 * @file EtiquetadorPGO.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
-*
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Sistema para la etiquetación de palabras
 */
 #pragma once
 
@@ -29,7 +16,7 @@
 
 /**
 * @class Lexico
-* @brief clase que determina la tipologia PGO de las palabras.
+* @brief Determina la tipologia PGO de las palabras.
 *
 * - Carga los diccionarios
 * - Verifica la palabra con los diccionarios
@@ -38,10 +25,12 @@
 */
 class Lexico {
     private:
-    Diccionario determinantes;
-    Diccionario preposiciones;
-    Diccionario vervos;
-    Diccionario advervios;
+		Diccionario adjetivo;
+		Diccionario adverbio;
+		Diccionario articulo;
+		Diccionario vervo;
+		Diccionario preposicion;
+		Diccionario conjuccion;
 
     public:
     /**
@@ -50,13 +39,32 @@ class Lexico {
     Lexico();
 
     /**
-    * brief Obtiene la etiqueta Parte Gramatical
-    * de la Oracion
+    * @brief Obtiene la etiqueta Parte Gramatical de la Oracion
     *
-    * @param string palabra
-    * @return EtiquetaPGO etiqueta.
+    * @param palabra de la que optenemos la etiqueta
+    * @return etiqueta de la palabra
     */
     const EtiquetaPGO obtenerEtiqueta(const std::string& palabra);
+
+	/**
+	 * @brief Obtener el genero de la palabra.
+	 *
+	 * se obtiene segun como termine dicha palabra 
+	 *
+	 * @param palabra de la que optenemos el genero
+	 * @return genero de la palabra
+	 */
+	const GeneroPGO obtenerGenero(const std::string& palabra);
+
+	/**
+	 * @brief Obtener el número de la palabra.
+	 *
+	 * se obtiene según como termine dicha palabra en s o es es plural, y si no singular.
+	 *
+	 * @param palabra de la que optenemos el número
+	 * @return número de la palabra
+	 */
+	const NumeroPGO obtenerNumero(const std::string& palabra);
 };
 
 /**
@@ -64,14 +72,13 @@ class Lexico {
 * @brief Asigna etiquetas de Partes Gramaticales de la Oracion.
 */
 class EtiquetadorPGO {
-    private:
+    public:
     Lexico lexico;
 
-    public:
     /**
      * @brief Obtiene la etiqueta de la palabra
-     * @param palabra, palabra a Etiquetar
-     * @return etiquetaPGO, etiqueta de la palabra
+     * @param palabra a Etiquetar
+     * @return etiqueta de la palabra
      */
     const EtiquetaPGO Etiquetar(const std::string& palabra);
 };

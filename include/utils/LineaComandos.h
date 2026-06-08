@@ -1,38 +1,28 @@
 /**
 * @file LineaComandos.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
-*
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Define el comportamiento y la ejecución de un programa con ordenes en linea de comandos
 */
 
 #include <iostream>
 #include <string>
 #include <map>
 #include <functional>
+#include <vector>
 
 /**
 * @class LineaComandos
-* @brief Clase simple para gestionar comandos de línea de comandos (CLI).
+* @brief Gestiona comandos de línea de comandos (CLI).
 *
 * Esta clase permite registrar comandos con callbacks asociados y ejecutar
 * acciones en función de los argumentos recibidos desde la terminal.
 *
+* - Establece los posibles comandos disponibles
+* - Ejecuta los comandos mandados por el usuario
 */
 class LineaComandos {
     private:
@@ -47,10 +37,9 @@ class LineaComandos {
     * @param argv Array de argumentos.
     */
     LineaComandos(int argc, char* argv[]);
-    
+
     /**
     * @brief Registra un comando CLI.
-    *
     * @param nombre Nombre del comando (ej: --help, --archivo).
     * @param func Función a ejecutar cuando se invoque el comando.
     *

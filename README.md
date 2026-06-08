@@ -7,7 +7,7 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 ## 🚀 Características
 
 - 🔤 Tokenización avanzada (soporte Unicode con ICU opcional)
-- 🏷️ Etiquetado gramatical (PGO)  
+- 🏷️ Etiquetado gramatical (EtiquetaPGO)  
 - 📚 Diccionarios externos configurables
 - ⚠️ Sistema de errores tipado (`Error`)
 - 📝 Logging thread-safe
@@ -18,12 +18,12 @@ Motor básico de procesamiento de lenguaje natural (NLP) en C++, con tokenizaci�
 
 ## 📁 Estructura del proyecto
 
-AnalizadorTexto/
-├── include/
-├── src/
-├── data/
-├── CMakeLists.txt
-└── main.cpp
+AnalizadorTexto/  
+├── include/  
+├── src/  
+├── data/  
+├── CMakeLists.txt  
+└── main.cpp  
 
 ---
 
@@ -34,35 +34,38 @@ AnalizadorTexto/
 
 ---
 
-## 🔧 Instalación de fuentes
+## 🔧 Instalación
 
-git clone https://github.com/tuusuario/AnalizadorTexto.git
-cd AnalizadorTexto
-mkdir build
-cd build
-cmake ..
-make
-make --install
+git clone https://github.com/AlbertoSanchoyerto/AnalizadorTexto.git  
+cd AnalizadorTexto  
+mkdir build  
+cd build  
+cmake ..  
+make  
 
 ---
 
 ## 🧪 Ejemplo de uso
 
-```cpp
-#include "core/DocumentoTexto.h"
-#include "utils/Logger.h"
+```Bash
 
-int main() {
-    Logger::instancia().setArchivo("log/app.log");
-
-    DocumentoTexto doc;
-    doc.cargarDesdeArchivo("data/texto.txt");
-    doc.imprimir();
-}
+AnalizadorTexto --archivo data/documento.txt  
+AnalizadorTexto --help  
 ```
+
+Comandos:  
+  --archivo [fichero]   Realizar analisis del texto del fichero .txt  
+  --log [ficheroLog]    Especifica un fichero .log  
+  --help                Mostrar ayuda  
 
 ---
 
 ## 📄 Licencia
 
-MIT License
+MIT License.
+
+Copyright (c) 2026 Alberto Sanchoyerto
+
+Consulte el archivo [LICENSE](LICENSE) para obtener el texto completo.
+
+\include LICENSE

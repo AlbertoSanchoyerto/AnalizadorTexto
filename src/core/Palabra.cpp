@@ -3,15 +3,20 @@
 */
 #include "core/Palabra.h"
 
-Palabra::Palabra(const Token &t, EtiquetaPGO e, int indice) {
-    token = t;
-    etiqueta = e;
-    indiceParrafo = indice;
+void Palabra::setEtiqueta(EtiquetaPGO e) {
+	etiqueta = e;
+}
+
+EtiquetaPGO Palabra::getEtiqueta() const
+{
+	return etiqueta;
 }
 
 void Palabra::imprimir() const {
 	std::cout << "[" << token.palabra << "] "
-	<< "PGO=" << DescripcionPGO(etiqueta).descripcion()
-    << " Parrafo=" << indiceParrafo
-    << std::endl;
+		<< "PGO=" << DescripcionPGO(etiqueta).descripcion()
+		<< " Numero=" << DescripcionPGO(numero).descripcion()
+		<< " Genero=" << DescripcionPGO(genero).descripcion()
+		<< " Parrafo=" << indiceParrafo
+		<< std::endl;
 }

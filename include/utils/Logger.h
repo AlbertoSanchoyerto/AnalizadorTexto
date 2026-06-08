@@ -1,24 +1,11 @@
 /**
 * @file Logger.h
-* @autor Alberto Sanchoyerto
-* @fecha 2026
+* @author Alberto Sanchoyerto
+* @date 2026
 * @version 1.0
+* @copyright (c) 2026 Alberto Sanchoyerto
 *
-* @copyright
-* Copyright (c) 2026 Alberto Sanchoyerto
-*
-* @license MIT License
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included
-* in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+* @brief Maneja la escritura de un fichero log
 */
 #pragma once
 
@@ -26,6 +13,10 @@
 #include <fstream>
 #include <mutex>
 
+/**
+ * @enum NivelLog
+ * @brief Niveles o tipos de log
+ */
 enum class NivelLog {
     DEBUG,
     INFO,
@@ -35,6 +26,10 @@ enum class NivelLog {
 
 /**
  * @class Logger
+ * @brief Maneja los ficheros log de una aplicación
+ *
+ * - Establece el fichero donde escribir el log
+ * - Escribe una linea log con nivel o tipo apunte
  */
 class Logger {
 private:
@@ -48,20 +43,29 @@ private:
     std::string timestamp();
 
 public:
+    /**
+     * @brief Instancia de logs de errores
+	 * @return retorna su misma instacia de log
+     */
     static Logger& instancia();
 
     /**
      * @brief Establece el nivel de log de Errores
-     * @param NivelLog nivel establecido del log
+     * @param nivel establecido del log
      */
     void setNivel(NivelLog nivel);
     
     /**
-     * @nrief Establece el fichero donde escribir el log
-     * @param nombreArchivo nombre del archivo log
+     * @brief Establece el fichero donde escribir el log
+     * @param nombreArchivo del archivo log
      */
     void setArchivo(const std::string& nombreArchivo);
 
+    /**
+     * @brief Crea un mensaje log
+     * @param nivel del error
+	 * @param mensaje del error
+     */
     void log(NivelLog nivel, const std::string& mensaje);
 
     // eliminar copias

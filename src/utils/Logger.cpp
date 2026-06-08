@@ -39,8 +39,17 @@ std::string Logger::timestamp() {
     auto ahora = std::chrono::system_clock::now();
     auto tiempo = std::chrono::system_clock::to_time_t(ahora);
 
+	std::tm tm{};
+
+#ifdef _WIN32
+	localtime_s(&tm, &tiempo);
+#else
+	localtime_r(&tiempo, &tm);
+#endif
+
     std::ostringstream oss;
-    oss << std::put_time(std::localtime(&tiempo), "%Y-%m-%d %H:%M:%S");
+    //oss << std::put_time(std::localtime(&tiempo), "%Y-%m-%d %H:%M:%S");
+	oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
     return oss.str();
 }
 
